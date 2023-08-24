@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket portal</title>
+</head>
+<body>
+    <h1>Ticket portal</h1>
+    <form id="ticketForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            <option value="General">General</option>
+            <option value="Technical">Technical</option>
+            <option value="Billing">Billing</option>
+        </select><br><br>
+        
+        <label for="priority">Priority:</label>
+        <input type="radio" id="low" name="priority" value="Low" checked>
+        <label for="low">Low</label>
+        <input type="radio" id="medium" name="priority" value="Medium">
+        <label for="medium">Medium</label>
+        <input type="radio" id="high" name="priority" value="High">
+        <label for="high">High</label><br><br>
+        
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+        
+        <button type="submit">Submit Ticket</button>
+    </form>
+
+    <script>
+        // Handle ticket submission
+        document.getElementById("ticketForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Collect form data
+            const formData = new FormData(event.target);
+            const ticketData = {};
+            formData.forEach((value, key) => {
+                ticketData[key] = value;
+            });
+
+            // Simulate sending the ticket data to the server (replace with actual API call)
+            console.log("Ticket submitted:", ticketData);
+            alert("Ticket submitted successfully!");
+
+            // Reset the form
+            event.target.reset();
+        });
+    </script>
+</body>
+</html>
